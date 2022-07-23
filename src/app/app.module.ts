@@ -12,6 +12,8 @@ import { PlusIconComponent } from './icons/plus-icon.component';
 import { NoteRepository } from './repositories/note.repository';
 import { NoteCardComponent } from './components/note-card/note-card.component';
 import { NotesGridComponent } from './components/notes-grid/notes-grid.component';
+import { ViewNoteComponent } from './pages/view-note/view-note.component';
+import { ArrowLeftIconComponent } from './icons/arrow-left-icon.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +26,8 @@ import { NotesGridComponent } from './components/notes-grid/notes-grid.component
     PlusIconComponent,
     NoteCardComponent,
     NotesGridComponent,
+    ViewNoteComponent,
+    ArrowLeftIconComponent,
   ],
   imports: [
     BrowserModule,
