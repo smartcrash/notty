@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { NoteService } from 'src/app/services/note.service';
 
 @Component({
@@ -7,10 +8,14 @@ import { NoteService } from 'src/app/services/note.service';
 })
 export class NoteAdderButtonComponent implements OnInit {
 
-  constructor(private noteService: NoteService) { }
+  constructor(private noteService: NoteService, private router: Router) { }
 
   ngOnInit(): void {
   }
 
-  onClick = () => this.noteService.createNote({})
+  onClick() {
+    this.noteService
+      .createNote({})
+      .subscribe(({ id }) => this.router.navigate(['n', id]))
+  }
 }
