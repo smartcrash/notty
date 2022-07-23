@@ -9,6 +9,7 @@ import { PencilSquareIconComponent } from './icons/pencil-square-icon.component'
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { NoteAdderButtonComponent } from './components/note-adder-button/note-adder-button.component';
 import { PlusIconComponent } from './icons/plus-icon.component';
+import { NoteRepository } from './repositories/note.repository';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,7 @@ import { PlusIconComponent } from './icons/plus-icon.component';
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [NoteRepository],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
