@@ -1,3 +1,5 @@
+import { Observable } from "rxjs"
+
 export default interface Repository<T> {
   create(entity: Partial<T>): Promise<T>
 
@@ -6,6 +8,8 @@ export default interface Repository<T> {
   delete(id: string): Promise<boolean>
 
   find(conditions: Partial<T>): Promise<T[]>
+
+  findAndObserve(conditions: Partial<T>): Observable<T[]>
 
   findById(id: string): Promise<T | undefined>
 }

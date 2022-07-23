@@ -1,4 +1,5 @@
 import { Model, Collection, Q } from "@nozbe/watermelondb";
+import { Observable } from "rxjs";
 import database from "src/database";
 import { TableName } from "src/model/schema";
 import Repository from "../interfaces/repository.interface";
@@ -52,6 +53,14 @@ export abstract class BaseRepository<T extends Model> implements Repository<T> {
       .map(([key, value]) => Q.where(key, value))
 
     return this.collection.query(...conditions).fetch()
+  }
+
+  findAndObserve(partialEntity: Partial<T>): Observable<T[]> {
+    const conditions = Object
+      .entries(partialEntity)
+      .map(([key, value]) => Q.where(key, value))
+
+    return this.collection.query(...conditions).observe()
   }
 
   async findById(id: string): Promise<T | undefined> {
