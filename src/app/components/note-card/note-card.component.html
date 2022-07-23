@@ -1,0 +1,12 @@
+<li>
+  <a routerLink="/n/{{ note.id }}">
+    <article class="rounded-lg px-5 py-3 space-y-2 border border-gray-200">
+      <h4 class="text-xl font-semibold">{{ note.title }}</h4>
+      <p class="text-sm opacity-70">{{ note.content }}</p>
+
+      <div class="text-right">
+        <span class="text-sm opacity-50">{{ note.createdAt | date }}</span>
+      </div>
+    </article>
+  </a>
+</li>
