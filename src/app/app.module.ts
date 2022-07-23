@@ -7,6 +7,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { LogoComponent } from './components/logo.component';
 import { PencilSquareIconComponent } from './icons/pencil-square-icon.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { NoteAdderButtonComponent } from './components/note-adder-button/note-adder-button.component';
 import { PlusIconComponent } from './icons/plus-icon.component';
 
 @NgModule({
