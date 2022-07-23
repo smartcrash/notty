@@ -12,4 +12,5 @@ export class NoteAdderButtonComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  onClick = () => this.noteService.createNote({})
 }
