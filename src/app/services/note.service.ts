@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, from, map } from 'rxjs';
+import { from, Observable } from 'rxjs';
 import Note from 'src/model/Note';
 import { NoteRepository } from '../repositories/note.repository';
 
@@ -8,7 +8,7 @@ export class NoteService {
   constructor(private noteRepository: NoteRepository) { }
 
   allNotes(): Observable<Note[]> {
-    return this.noteRepository.findAndObserve({})
+    return from(this.noteRepository.find({}))
   }
 
   getNoteById(id: string): Observable<Note | undefined> {
