@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ActivatedRoute, NavigationStart, Router } from '@angular/router';
+import { filter, Subscription } from 'rxjs';
 import { NoteService } from 'src/app/services/note.service';
 import Note from 'src/model/Note';
 
@@ -8,25 +8,40 @@ import Note from 'src/model/Note';
   selector: 'app-view-note',
   templateUrl: './view-note.component.html',
 })
-export class ViewNoteComponent implements OnInit {
+export class ViewNoteComponent implements OnInit, OnDestroy {
   note!: Note
-  routeParamsSubscription?: Subscription
-
   title: string = ''
   content: string = ''
+
+  routerEventsSubscription?: Subscription
 
   constructor(private router: Router, private route: ActivatedRoute, private noteService: NoteService) { }
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id')!
 
-    this.noteService
+    const getNoteByIdSubscription = this.noteService
       .getNoteById(id)
       .subscribe(note => {
         this.note = note!
         this.title = this.note.title
         this.content = this.note.content
+
+        getNoteByIdSubscription.unsubscribe()
       })
+
+    this.routerEventsSubscription = this.router.events
+      .pipe(filter((event) => event instanceof NavigationStart))
+      .subscribe(() => {
+        const { title, content } = this
+
+        /* Delete note if is empty */
+        if (!title.trim() && !content.trim()) this.delete()
+      })
+  }
+
+  ngOnDestroy(): void {
+    this.routerEventsSubscription?.unsubscribe()
   }
 
   sync() {

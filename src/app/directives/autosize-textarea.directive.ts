@@ -7,6 +7,7 @@ export class AutosizeTextareaDirective {
     requestAnimationFrame(() => {
       this.el.nativeElement.style.height = (this.el.nativeElement.scrollHeight) + "px";
       this.el.nativeElement.style.overflowY = 'hidden'
+      this.el.nativeElement.style.resize = 'none'
     })
   }
 
