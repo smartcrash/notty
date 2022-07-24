@@ -22,4 +22,8 @@ export class NoteService {
   updateNote(id: string, partialEntity: Partial<Note>): Observable<boolean> {
     return from(this.noteRepository.update(id, partialEntity))
   }
+
+  deleteNote(id: string): Observable<boolean> {
+    return from(this.noteRepository.delete(id))
+  }
 }

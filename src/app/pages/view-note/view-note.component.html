@@ -2,6 +2,16 @@
   <a routerLink="/" leftElement title="Go back">
     <app-arrow-left-icon innerClass="w-8 h-8"></app-arrow-left-icon>
   </a>
+
+  <app-menu rightElement>
+    <button appMenuButton>
+      <app-three-dots-vertical-icon innerClass="w-5 h-5"></app-three-dots-vertical-icon>
+    </button>
+
+    <app-menu-list>
+      <app-menu-item (click)="$event.preventDefault(); delete()">Delete</app-menu-item>
+    </app-menu-list>
+  </app-menu>
 </app-navbar>
 
 <main class="max-w-2xl mx-auto px-2 sm:px-0 pt-10">

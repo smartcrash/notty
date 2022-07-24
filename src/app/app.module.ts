@@ -20,6 +20,7 @@ import { MenuComponent } from './components/menu.component';
 import { MenuListComponent } from './components/menu-list.component';
 import { MenuItemComponent } from './components/menu-item.component';
 import { MenuButtonComponent } from './components/menu-button.component';
+import { ThreeDotsVerticalIconComponent } from './icons/three-dots-vertical-icon.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { MenuButtonComponent } from './components/menu-button.component';
     MenuButtonComponent,
     MenuListComponent,
     MenuItemComponent,
+    ThreeDotsVerticalIconComponent,
   ],
   imports: [
     BrowserModule,

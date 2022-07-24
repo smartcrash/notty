@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { NoteService } from 'src/app/services/note.service';
 import Note from 'src/model/Note';
@@ -15,7 +15,7 @@ export class ViewNoteComponent implements OnInit {
   title: string = ''
   content: string = ''
 
-  constructor(private route: ActivatedRoute, private noteService: NoteService) { }
+  constructor(private router: Router, private route: ActivatedRoute, private noteService: NoteService) { }
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id')!
@@ -34,5 +34,13 @@ export class ViewNoteComponent implements OnInit {
     const { title, content } = this
 
     this.noteService.updateNote(id, { title, content })
+  }
+
+  delete() {
+    const { id } = this.note
+
+    this.noteService
+      .deleteNote(id)
+      .subscribe(() => this.router.navigate(['/']))
   }
 }
