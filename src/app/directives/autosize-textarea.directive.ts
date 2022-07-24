@@ -4,8 +4,10 @@ import { Directive, ElementRef, HostListener } from '@angular/core';
 export class AutosizeTextareaDirective {
 
   constructor(private el: ElementRef<HTMLTextAreaElement>) {
-    this.el.nativeElement.style.height = "auto";
-    this.el.nativeElement.style.overflowY = 'hidden'
+    requestAnimationFrame(() => {
+      this.el.nativeElement.style.height = (this.el.nativeElement.scrollHeight) + "px";
+      this.el.nativeElement.style.overflowY = 'hidden'
+    })
   }
 
   @HostListener('input') onInput() {
