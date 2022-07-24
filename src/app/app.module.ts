@@ -16,6 +16,10 @@ import { ViewNoteComponent } from './pages/view-note/view-note.component';
 import { ArrowLeftIconComponent } from './icons/arrow-left-icon.component';
 import { AutosizeTextareaDirective } from './directives/autosize-textarea.directive';
 import { FormsModule } from '@angular/forms';
+import { MenuComponent } from './components/menu.component';
+import { MenuListComponent } from './components/menu-list.component';
+import { MenuItemComponent } from './components/menu-item.component';
+import { MenuButtonComponent } from './components/menu-button.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +34,11 @@ import { FormsModule } from '@angular/forms';
     NotesGridComponent,
     ViewNoteComponent,
     ArrowLeftIconComponent,
-    AutosizeTextareaDirective
+    AutosizeTextareaDirective,
+    MenuComponent,
+    MenuButtonComponent,
+    MenuListComponent,
+    MenuItemComponent,
   ],
   imports: [
     BrowserModule,

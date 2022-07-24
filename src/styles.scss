@@ -1,6 +1,24 @@
+/* -------------------------------------------------------------------------- */
+/*                                 TailwindCSS                                */
+/* -------------------------------------------------------------------------- */
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* -------------------------------------------------------------------------- */
+/*                                  Boostrap                                  */
+/* -------------------------------------------------------------------------- */
+
+// Required Bootstrap imports
+@import "../node_modules/bootstrap/scss/functions";
+@import "../node_modules/bootstrap/scss/variables";
+@import "../node_modules/bootstrap/scss/maps";
+@import "../node_modules/bootstrap/scss/mixins";
+@import "../node_modules/bootstrap/scss/root";
+
+// Optional components
+@import "../node_modules/bootstrap/scss/dropdown";
 
 .icon {
   display: inline-block;
