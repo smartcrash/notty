@@ -18,4 +18,8 @@ export class NoteService {
   createNote(partialEntity: Partial<Note>): Observable<Note> {
     return from(this.noteRepository.create(partialEntity))
   }
+
+  updateNote(id: string, partialEntity: Partial<Note>): Observable<boolean> {
+    return from(this.noteRepository.update(id, partialEntity))
+  }
 }

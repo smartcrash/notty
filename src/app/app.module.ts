@@ -15,6 +15,7 @@ import { NotesGridComponent } from './components/notes-grid/notes-grid.component
 import { ViewNoteComponent } from './pages/view-note/view-note.component';
 import { ArrowLeftIconComponent } from './icons/arrow-left-icon.component';
 import { AutosizeTextareaDirective } from './directives/autosize-textarea.directive';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { AutosizeTextareaDirective } from './directives/autosize-textarea.direct
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [NoteRepository],
   bootstrap: [AppComponent]

@@ -3,3 +3,15 @@
     <app-arrow-left-icon innerClass="w-8 h-8"></app-arrow-left-icon>
   </a>
 </app-navbar>
+
+<main class="max-w-2xl mx-auto px-2 sm:px-0 pt-10">
+  <div *ngIf="!note">Loading...</div>
+
+  <div *ngIf="!!note">
+    <textarea name="content" class="text-3xl font-semibold w-full mb-8 focus:outline-none" rows="1" appAutosizeTextarea
+      (input)="sync()" [(ngModel)]="title" placeholder="Title"></textarea>
+
+    <textarea name="content" placeholder="Type something..." class="w-full focus:outline-none" rows="1"
+      [(ngModel)]="content" appAutosizeTextarea (input)="sync()"></textarea>
+  </div>
+</main>
