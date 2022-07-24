@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
   selector: 'app-menu-item',
   template: `
     <li>
-      <a class="dropdown-item" href="#">
+      <a href="#" class="dropdown-item">
         <ng-content></ng-content>
       </a>
     </li>

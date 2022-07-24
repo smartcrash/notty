@@ -10,7 +10,6 @@ export class MenuButtonComponent implements AfterViewInit {
   ngAfterViewInit(): void {
     const nativeElement = this.viewRef.element.nativeElement as Element
 
-    nativeElement.classList.add('dropdown-toggle')
     nativeElement.setAttribute('href', '#')
     nativeElement.setAttribute('role', 'button')
     nativeElement.setAttribute('data-bs-toggle', 'dropdown')

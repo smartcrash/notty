@@ -20,7 +20,7 @@ export class MenuComponent implements OnInit, AfterViewInit, OnDestroy {
   ngAfterViewInit(): void {
     requestAnimationFrame(() => {
       const nativeElement = this.viewRef.element.nativeElement as Element
-      const dropdownToggle = nativeElement.getElementsByClassName('dropdown-toggle')[0]
+      const dropdownToggle = nativeElement.querySelector('[data-bs-toggle="dropdown"]')!
 
       this.bsDropdown = new Dropdown(dropdownToggle, {})
     })
