@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subscription, tap } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { NoteService } from 'src/app/services/note.service';
 import Note from 'src/model/Note';
 
@@ -16,7 +16,6 @@ export class HomeComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.allNotesSubscription = this.noteService
       .allNotes()
-      .pipe(tap(console.log))
       .subscribe(notes => this.allNotes = notes)
   }
 

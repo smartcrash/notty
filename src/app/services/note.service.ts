@@ -8,7 +8,7 @@ export class NoteService {
   constructor(private noteRepository: NoteRepository) { }
 
   allNotes(): Observable<Note[]> {
-    return from(this.noteRepository.find({}))
+    return from(this.noteRepository.find({}, { updated_at: "desc" }))
   }
 
   getNoteById(id: string): Observable<Note | undefined> {

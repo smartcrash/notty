@@ -47,20 +47,16 @@ export abstract class BaseRepository<T extends Model> implements Repository<T> {
     })
   }
 
-  find(partialEntity: Partial<T>): Promise<T[]> {
+  find(partialEntity: Partial<T>, sort: Record<string, 'desc' | 'asc'> = {}): Promise<T[]> {
     const conditions = Object
       .entries(partialEntity)
       .map(([key, value]) => Q.where(key, value))
 
-    return this.collection.query(...conditions).fetch()
-  }
+    const orders = Object
+      .entries(sort)
+      .map(([key, value]) => Q.sortBy(key, Q[value === 'desc' ? Q.desc : Q.asc]))
 
-  findAndObserve(partialEntity: Partial<T>): Observable<T[]> {
-    const conditions = Object
-      .entries(partialEntity)
-      .map(([key, value]) => Q.where(key, value))
-
-    return this.collection.query(...conditions).observe()
+    return this.collection.query(...[...conditions, ...orders]).fetch()
   }
 
   async findById(id: string): Promise<T | undefined> {
