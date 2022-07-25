@@ -16,7 +16,8 @@ export class NoteService {
   }
 
   createNote(partialEntity: Partial<Note>): Observable<Note> {
-    return from(this.noteRepository.create({ color: '#FFF', ...partialEntity }))
+    const defaultColor = '#FFFFFF'
+    return from(this.noteRepository.create({ color: defaultColor, ...partialEntity }))
   }
 
   updateNote(id: string, partialEntity: Partial<Note>): Observable<boolean> {

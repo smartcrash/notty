@@ -1,11 +1,11 @@
-<div style="background: {{ color }};" class="min-h-screen">
+<div style="background-color: {{ backgroundColor }}; color: {{ textColor }}" class="min-h-screen">
   <app-navbar>
     <a routerLink="/" leftElement title="Go back">
       <app-arrow-left-icon innerClass="w-8 h-8"></app-arrow-left-icon>
     </a>
 
     <div rightElement class="flex space-x-3">
-      <app-color-picker initialColor="{{ color }}" (change)="onColorChange($event)"></app-color-picker>
+      <app-color-picker initialColor="{{ backgroundColor }}" (change)="onColorChange($event)"></app-color-picker>
 
       <app-menu>
         <button appMenuButton>
@@ -24,7 +24,7 @@
 
     <div *ngIf="!!note">
       <textarea name="content" class="bg-transparent text-3xl font-semibold w-full mb-8 focus:outline-none" rows="1"
-        appAutosizeTextarea (input)="sync()" [(ngModel)]="title" placeholder="Title"></textarea>
+        autofocus appAutosizeTextarea (input)="sync()" [(ngModel)]="title" placeholder="Title"></textarea>
 
       <textarea name="content" placeholder="Type something..." class="bg-transparent w-full focus:outline-none" rows="1"
         [(ngModel)]="content" appAutosizeTextarea (input)="sync()"></textarea>

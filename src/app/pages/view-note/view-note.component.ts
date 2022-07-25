@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationStart, Router } from '@angular/router';
 import { filter, Subscription } from 'rxjs';
+import { ColorService } from 'src/app/services/color.service';
 import { NoteService } from 'src/app/services/note.service';
 import Note from 'src/model/Note';
 
@@ -12,11 +13,13 @@ export class ViewNoteComponent implements OnInit, OnDestroy {
   note!: Note
   title: string = ''
   content: string = ''
-  color: string = '#FFF'
+
+  backgroundColor: string = '#FFFFFF'
+  textColor: string = this.colorService.getContrastYIQ(this.backgroundColor)
 
   routerEventsSubscription?: Subscription
 
-  constructor(private router: Router, private route: ActivatedRoute, private noteService: NoteService) { }
+  constructor(private router: Router, private route: ActivatedRoute, private noteService: NoteService, private colorService: ColorService) { }
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id')!
@@ -27,7 +30,7 @@ export class ViewNoteComponent implements OnInit, OnDestroy {
         this.note = note!
         this.title = this.note.title
         this.content = this.note.content
-        this.color = this.note.color
+        this.setBackgroundColor(this.note.color)
 
         getNoteByIdSubscription.unsubscribe()
       })
@@ -48,7 +51,7 @@ export class ViewNoteComponent implements OnInit, OnDestroy {
 
   sync() {
     const { id } = this.note
-    const { title, content, color } = this
+    const { title, content, backgroundColor: color } = this
 
     this.noteService.updateNote(id, { title, content, color })
   }
@@ -62,7 +65,12 @@ export class ViewNoteComponent implements OnInit, OnDestroy {
   }
 
   onColorChange(hex: string) {
-    this.color = hex
+    this.setBackgroundColor(hex)
     this.sync()
+  }
+
+  setBackgroundColor(hex: string) {
+    this.backgroundColor = hex
+    this.textColor = this.colorService.getContrastYIQ(hex)
   }
 }

@@ -11,7 +11,7 @@ export class ColorPickerComponent implements OnInit, OnChanges {
   currentColor!: string
 
   readonly colors: string[] = [
-    '#FFF',
+    '#FFFFFF',
     '#EF4444',
     '#F97316',
     '#16A34A',
