@@ -1,13 +1,12 @@
 <app-menu>
-  <button appMenuButton class="w-8 h-8 rounded-full border-2 border-gray-900"
-    style="background: {{ toHex(currentColor) }};">
+  <button appMenuButton class="w-8 h-8 rounded-full border-2 border-gray-900" style="background: {{ currentColor }};">
   </button>
 
   <app-menu-list>
     <ul class="flex space-x-3 px-3">
-      <li *ngFor="let color of colorNames">
-        <button class="w-8 h-8 rounded-full border-2 border-gray-900" (click)="setColor(color)"
-          style="background: {{ toHex(color) }};"></button>
+      <li *ngFor="let hex of colors">
+        <button class="w-8 h-8 rounded-full border-2 border-gray-900" (click)="setColor(hex)"
+          style="background: {{ hex }};"></button>
       </li>
     </ul>
   </app-menu-list>
