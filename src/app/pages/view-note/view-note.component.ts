@@ -12,6 +12,7 @@ export class ViewNoteComponent implements OnInit, OnDestroy {
   note!: Note
   title: string = ''
   content: string = ''
+  color: string = '#FFF'
 
   routerEventsSubscription?: Subscription
 
@@ -26,6 +27,7 @@ export class ViewNoteComponent implements OnInit, OnDestroy {
         this.note = note!
         this.title = this.note.title
         this.content = this.note.content
+        this.color = this.note.color
 
         getNoteByIdSubscription.unsubscribe()
       })
@@ -46,9 +48,9 @@ export class ViewNoteComponent implements OnInit, OnDestroy {
 
   sync() {
     const { id } = this.note
-    const { title, content } = this
+    const { title, content, color } = this
 
-    this.noteService.updateNote(id, { title, content })
+    this.noteService.updateNote(id, { title, content, color })
   }
 
   delete() {
@@ -57,5 +59,10 @@ export class ViewNoteComponent implements OnInit, OnDestroy {
     this.noteService
       .deleteNote(id)
       .subscribe(() => this.router.navigate(['/']))
+  }
+
+  onColorChange(hex: string) {
+    this.color = hex
+    this.sync()
   }
 }

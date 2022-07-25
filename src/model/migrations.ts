@@ -1,4 +1,4 @@
-import { createTable, schemaMigrations } from '@nozbe/watermelondb/Schema/migrations'
+import { createTable, schemaMigrations, addColumns } from '@nozbe/watermelondb/Schema/migrations'
 import { TableName } from './schema'
 
 export default schemaMigrations({
@@ -14,6 +14,15 @@ export default schemaMigrations({
             { name: 'created_at', type: 'number' },
             { name: 'updated_at', type: 'number' },
           ]
+        }),
+      ],
+    },
+    {
+      toVersion: 3,
+      steps: [
+        addColumns({
+          table: TableName.NOTES,
+          columns: [{ name: 'color', type: 'string', isOptional: true }]
         }),
       ],
     },

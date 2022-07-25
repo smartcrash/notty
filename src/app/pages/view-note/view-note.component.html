@@ -1,27 +1,33 @@
-<app-navbar>
-  <a routerLink="/" leftElement title="Go back">
-    <app-arrow-left-icon innerClass="w-8 h-8"></app-arrow-left-icon>
-  </a>
+<div style="background: {{ color }};" class="min-h-screen">
+  <app-navbar>
+    <a routerLink="/" leftElement title="Go back">
+      <app-arrow-left-icon innerClass="w-8 h-8"></app-arrow-left-icon>
+    </a>
 
-  <app-menu rightElement>
-    <button appMenuButton>
-      <app-three-dots-vertical-icon innerClass="w-5 h-5"></app-three-dots-vertical-icon>
-    </button>
+    <div rightElement class="flex space-x-3">
+      <app-color-picker initialColor="{{ color }}" (change)="onColorChange($event)"></app-color-picker>
 
-    <app-menu-list>
-      <app-menu-item (click)="$event.preventDefault(); delete()">Delete</app-menu-item>
-    </app-menu-list>
-  </app-menu>
-</app-navbar>
+      <app-menu>
+        <button appMenuButton>
+          <app-three-dots-vertical-icon innerClass="w-5 h-5"></app-three-dots-vertical-icon>
+        </button>
 
-<main class="max-w-2xl mx-auto px-2 sm:px-0 pt-10">
-  <div *ngIf="!note">Loading...</div>
+        <app-menu-list>
+          <app-menu-item (click)="$event.preventDefault(); delete()">Delete</app-menu-item>
+        </app-menu-list>
+      </app-menu>
+    </div>
+  </app-navbar>
 
-  <div *ngIf="!!note">
-    <textarea name="content" class="text-3xl font-semibold w-full mb-8 focus:outline-none" rows="1" appAutosizeTextarea
-      (input)="sync()" [(ngModel)]="title" placeholder="Title"></textarea>
+  <main class="max-w-2xl mx-auto px-2 sm:px-0 pt-10">
+    <div *ngIf="!note">Loading...</div>
 
-    <textarea name="content" placeholder="Type something..." class="w-full focus:outline-none" rows="1"
-      [(ngModel)]="content" appAutosizeTextarea (input)="sync()"></textarea>
-  </div>
-</main>
+    <div *ngIf="!!note">
+      <textarea name="content" class="bg-transparent text-3xl font-semibold w-full mb-8 focus:outline-none" rows="1"
+        appAutosizeTextarea (input)="sync()" [(ngModel)]="title" placeholder="Title"></textarea>
+
+      <textarea name="content" placeholder="Type something..." class="bg-transparent w-full focus:outline-none" rows="1"
+        [(ngModel)]="content" appAutosizeTextarea (input)="sync()"></textarea>
+    </div>
+  </main>
+</div>

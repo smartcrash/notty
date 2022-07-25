@@ -7,6 +7,7 @@ export default class Note extends Model {
 
   @field('title') title!: string
   @field('content') content!: string
+  @field('color') color!: string
   @readonly() @date('created_at') createdAt!: Date
   @readonly() @date('updated_at') updatedAt!: Date
 }
