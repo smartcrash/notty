@@ -21,6 +21,7 @@ import { MenuItemComponent } from './components/menu-item.component';
 import { MenuButtonComponent } from './components/menu-button.component';
 import { ThreeDotsVerticalIconComponent } from './icons/three-dots-vertical-icon.component';
 import { ColorPickerComponent } from './components/color-picker/color-picker.component';
+import { PaletteIconComponent } from './icons/palette-icon.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { ColorPickerComponent } from './components/color-picker/color-picker.com
     MenuItemComponent,
     ThreeDotsVerticalIconComponent,
     ColorPickerComponent,
+    PaletteIconComponent
   ],
   imports: [
     BrowserModule,
