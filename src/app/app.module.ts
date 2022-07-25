@@ -11,7 +11,6 @@ import { NoteAdderButtonComponent } from './components/note-adder-button/note-ad
 import { PlusIconComponent } from './icons/plus-icon.component';
 import { NoteRepository } from './repositories/note.repository';
 import { NoteCardComponent } from './components/note-card/note-card.component';
-import { NotesGridComponent } from './components/notes-grid/notes-grid.component';
 import { ViewNoteComponent } from './pages/view-note/view-note.component';
 import { ArrowLeftIconComponent } from './icons/arrow-left-icon.component';
 import { AutosizeTextareaDirective } from './directives/autosize-textarea.directive';
@@ -33,7 +32,6 @@ import { ColorPickerComponent } from './components/color-picker/color-picker.com
     NoteAdderButtonComponent,
     PlusIconComponent,
     NoteCardComponent,
-    NotesGridComponent,
     ViewNoteComponent,
     ArrowLeftIconComponent,
     AutosizeTextareaDirective,

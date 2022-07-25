@@ -1,5 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
 import { NoteService } from 'src/app/services/note.service';
 import Note from 'src/model/Note';
 
@@ -7,19 +6,24 @@ import Note from 'src/model/Note';
   selector: 'app-home',
   templateUrl: './home.component.html',
 })
-export class HomeComponent implements OnInit, OnDestroy {
+export class HomeComponent implements OnInit {
   allNotes: Note[] = []
-  allNotesSubscription?: Subscription
+  columnNotes: [Note[], Note[]] = [[], []]
 
   constructor(private noteService: NoteService) { }
 
   ngOnInit(): void {
-    this.allNotesSubscription = this.noteService
+    const allNotesSubscription = this.noteService
       .allNotes()
-      .subscribe(notes => this.allNotes = notes)
-  }
+      .subscribe(notes => {
+        this.allNotes = notes
 
-  ngOnDestroy(): void {
-    this.allNotesSubscription?.unsubscribe()
+        notes.forEach((note, index) => {
+          const columnIndex = index % 2 === 0 ? 0 : 1
+          this.columnNotes[columnIndex].push(note)
+        })
+
+        allNotesSubscription.unsubscribe()
+      })
   }
 }

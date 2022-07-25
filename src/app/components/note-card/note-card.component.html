@@ -1,7 +1,6 @@
 <li>
   <a routerLink="/n/{{ note.id }}">
-    <article class="rounded-lg px-5 py-3 space-y-2 border border-gray-200"
-      style="background-color: {{ note.color }}; color: {{ textColor }};">
+    <article class="rounded-lg px-5 py-3 space-y-2" style="background-color: {{ note.color }}; color: {{ textColor }};">
       <h4 class="text-xl font-semibold">{{ note.title }}</h4>
       <p class="text-sm opacity-70 whitespace-pre-wrap">{{ note.content }}</p>
 
